@@ -1,1 +1,1 @@
-var data = { a；1}
+var data = { a:1}
