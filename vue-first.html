@@ -2,43 +2,128 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
-    <div id="app">
-        {{message}}
-    </div>
-    <div id="app-2">
-    	<span v-bind:title="message">
-    		鼠标悬停几秒钟查看此处动态绑定的提示信息！
-    	</span>
-    </div>
-    <div id="app-3">
-    	<p v-if="seen">现在你看到我了</p>
-    </div>
+  <!-- 组件 -->
+  <div id="app-component">
+    <ol>
+      <!-- 创建一个 todo-item 组件的实例 -->
+      <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+        <!-- <todo-item v-for="ol in item.other" v-bind:todo="ol" v-bind:key="ol.id"></todo-item> -->
+      </todo-item>
+    </ol>
+  </div>
+  <div id="app-component-1">
+    <app-nav></app-nav>
+    <app-view>
+      <app-sidebar></app-sidebar>
+      <app-content></app-content>
+    </app-view>
+  </div>
+  <!-- 基础例子 -->
+  <div id="app">
+    {{message}}
+  </div>
+  <div id="app-2">
+    <span v-bind:title="message">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+  </div>
+  <div id="app-3">
+    <p v-if="seen">现在你看到我了</p>
+  </div>
+  <div id="app-4">
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </div>
+  <div id="app-5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+  </div>
+  <div id="app-6">
+    <p>{{message}}</p>
+    <input v-model="message">
+  </div>
 </body>
 <script>
+//组件学习
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li> {{todo.text}} <ul><li> {{todo.other.text}} </li></ul></li>'
+})
+var appcom = new Vue({
+  el: '#app-component',
+  data: {
+    groceryList: [{
+        id: 0,
+        text: '蔬菜',
+        other: [{ id: 0, text: '白菜' }, { id: 1, text: '萝卜' }, { id: 2, text: '其他' }]
+      },
+      {
+        id: 1,
+        text: '奶酪',
+        other: [{ id: 0, text: '芝士' }, { id: 1, text: '黄油' }, { id: 2, text: '其他' }]
+      },
+      {
+        id: 2,
+        text: '随便其它什么人吃的东西',
+        other: [{ id: 0, text: '骨头' }, { id: 1, text: '狗粮' }, { id: 2, text: '其他' }]
+      }
+    ]
+  }
+})
+// ....................................
 var app = new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello Vue!'
-    }
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
 })
 var app2 = new Vue({
-	el: '#app-2',
-	data:{
-		message: '页面加载于 ' + new Date().toLocaleString()
-	}
+  el: '#app-2',
+  data: {
+    message: '页面加载于 ' + new Date().toLocaleString()
+  }
 })
 var app3 = new Vue({
-	el: "#app-3",
-	data:{
-		seen: true
-	}
+  el: "#app-3",
+  data: {
+    seen: true
+  }
+})
+
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: '学习 JavaScript' },
+      { text: '学习 Vue' },
+      { text: '整个牛项目' }
+    ]
+  }
+})
+var app5 = new Vue({
+  el: "#app-5",
+  data: {
+    message: 'Hello Vue.js'
+  },
+  methods: {
+    reverseMessage: function() {
+      this.message = this.message.split('').reverse().join('');
+    }
+  }
+})
+var app6 = new Vue({
+  el: "#app-6",
+  data: {
+    message: 'Hello Vue!'
+  }
 })
 </script>
 
