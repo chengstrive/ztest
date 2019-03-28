@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-six-event</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/underscore.js"></script>
+</head>
+
+<body>
+	<div id="ex-1">
+		<button @click = "counter += 1"> Add 1</button>
+		<p>The button above has been clicked {{ counter }} times.</p>
+	</div>
+	<div id="ex-2">
+		<button @click="greet">Greet</button>
+	</div>
+	<script>
+		let ex1 = new Vue({
+			el:'#ex-1',
+			data:{
+				counter:0
+			}
+		})
+		let ex2 = new Vue({
+			el:'#ex-2',
+			data:{
+				name:'Vue.js'
+			},
+			methods:{
+				greet:function(event){
+					alert('Hello' + this.name + '!')
+					if(event){
+						alert(event.target.tagName)
+					}
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

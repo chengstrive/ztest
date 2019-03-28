@@ -33,6 +33,8 @@
     <li v-for="n in eventNumbers">{{n}}</li>
     <hr>
     <li v-for="n in even(numbers)">{{ n }}</li>
+     <hr>
+    <li v-for="n in 10">{{ n }}</li>
   </ul>
   <script>
   var ex1 = new Vue({
@@ -86,7 +88,7 @@
       }
     },
     methods: {
-      even: function(nubmers) {
+      even: function(numbers) {
         return numbers.filter(function(number) {
           return number % 2 === 0
         })
