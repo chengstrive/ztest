@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-four-bindclass</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div.static,[class~=arrclass] {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
+
+  div.active {
+    background-color: red;
+  }
+
+  div.text-danger {
+    border: 5px solid yellow;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="static" :class="classObject"></div>
+    <div class="arrclass" :class="[activeClass,errorClass]"></div>
+    <div class="arrclass1" v-if="flag"><input type="text"></div>
+    <div class="arrclass2" v-else>Oh no </div>
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+  </div>
+  <script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      isActive: true,
+      error: null,
+      errorClass: 'text-danger',
+      activeClass: 'active',
+      flag: true,
+      type:'A'
+    },
+    computed: {
+      classObject: function() {
+        return {
+          active: this.isActive && !this.error,
+          'text-danger': this.error && this.error.type === 'fatal'
+        }
+      }
+    }
+  })
+  </script>
+</body>
+
+</html>
