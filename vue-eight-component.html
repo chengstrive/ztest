@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-eight-component</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/underscore.js"></script>
+</head>
+
+<body>
+  <div id="ex-1">
+    <button-counter>111</button-counter>
+    <button-counter>222</button-counter>
+  </div>
+  
+  <div id="ex-3">
+    <blog-post 
+    	v-for="post in posts" 
+    	:key="post.id" 
+    	:post='post'
+    	></blog-post>
+  </div>
+  <script>
+
+  Vue.component('button-counter', {
+    data: function() {
+      return {
+        count: 0
+      }
+    },
+    template: '<button @click="count++">You clicked me {{ count }} times.</button>'
+  })
+
+  Vue.component('blog-post', {
+    props: ['post'],
+    template: `
+	    <div class="blog-post">
+	      <h3>{{ post.title }}</h3>
+	      <div v-html="post.content"></div>
+	    </div>
+		`
+  })
+
+  let ex1 = new Vue({
+    el: '#ex-1'
+  })
+
+  let ex3 = new Vue({
+    el: '#ex-3',
+    data: {
+      posts: [
+        { id: 1, title: 'My journey with Vue' },
+        { id: 2, title: 'Blogging with Vue' },
+        { id: 3, title: 'Why Vue is so fun' }
+      ]
+    }
+  })
+  </script>
+</body>
+
+</html>
