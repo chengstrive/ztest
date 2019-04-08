@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-nine-computer</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/underscore.js"></script>
+</head>
+
+<body>
+  <div id="ex-1">
+    <p>{{message}}</p>
+    <p>{{reversedMessage}}</p>
+    <p>{{ now }}</p>
+  </div>
+  <script>
+  let ex1 = new Vue({
+    el: '#ex-1',
+    data: {
+      message: 'Hello',
+    },
+    computed: {
+      reversedMessage: function() {
+        return this.message.split('').reverse().join('')
+      },
+      now: function() {
+        return Date.now()
+      }
+    },
+    methods: {
+    	now1: function(){
+    		return Date.now()
+    	}
+    }
+  })
+  </script>
+</body>
+
+</html>
