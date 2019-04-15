@@ -10,30 +10,55 @@
 
 <body>
 	<div id="ex-1">
-		<button @click = "counter += 1"> Add 1</button>
-		<p>The button above has been clicked {{ counter }} times.</p>
+		<button @click="counter += 1">加1</button>
+		<p>这个按钮被点击了 {{ counter }} 次。</p>
 	</div>
 	<div id="ex-2">
-		<button @click="greet">Greet</button>
+		<button @click="greet">GREET</button>
+	</div>
+	<div id="ex-3">
+		<button @click="say('hi')">Say hi</button>
+		<button @click="say('what')">Say what</button>
+		<div @click="say('haha')">
+			<button @click.stop.prevent="say('what')">Say what</button>
+		</div>
+		<button @click="warn('From cannot be submitted yet.',$event)"></button>
+		<button @keyup.enter="enter">enter</button>
+		<button @keyup.tab="enter">tab</button>
+		<button @keyup.delete="enter">delete</button>
+
 	</div>
 	<script>
-		let ex1 = new Vue({
-			el:'#ex-1',
+		var ex1 = new Vue({
+			el: '#ex-1',
 			data:{
 				counter:0
 			}
 		})
-		let ex2 = new Vue({
-			el:'#ex-2',
+		var ex2 = new Vue({
+			el:"#ex-2",
 			data:{
-				name:'Vue.js'
+				name:'zc'
 			},
 			methods:{
-				greet:function(event){
-					alert('Hello' + this.name + '!')
-					if(event){
-						alert(event.target.tagName)
-					}
+				greet:function(){
+					alert('Hello' + this.name)
+					alert(event.target.tagName)
+				}
+			}
+		})
+		var ex3 = new Vue({
+			el:'#ex-3',
+			methods:{
+				say:function(message){
+					console.log(message)
+				},
+				warn:function(message,e){
+					if (event) event.preventDefault()
+					console.log(message)
+				},
+				enter:function(){
+					alert(1)
 				}
 			}
 		})
