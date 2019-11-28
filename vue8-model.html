@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-model</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+  	hr{
+  		margin: 0;
+  		width: 300px;
+  	}
+  </style>
+</head>
+
+<body>
+  <div id="app-1">
+    <input v-model="message" placeholder="edit me">
+    <p>Message : {{message}}</p>
+		<hr>
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ mult_message }}</p>
+    <br>
+    <textarea v-model="mult_message" placeholder="add multiple lines"></textarea>
+    <hr>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <hr>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+	  <label for="jack">Jack</label>
+	  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+	  <label for="john">John</label>
+	  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+	  <label for="mike">Mike</label>
+	  <br>
+	  <span>Checked names: {{ checkedNames }}</span>
+	  <hr>
+	  <input type="radio" id="one" value="One" v-model="picked">
+	  <label for="one">One</label>
+	  <br>
+	  <input type="radio" id="two" value="Two" v-model="picked">
+	  <label for="two">Two</label>
+	  <br>
+	  <span>Picked: {{ picked }}</span>
+	  <hr>
+	  <select v-model="selected">
+	    <option v-for="option of options" :value="option.value">
+	    	{{option.text}}
+	    </option>
+	  </select>
+	  <span>Selected: {{ selected }}</span>
+	  <hr>
+		<input
+		  type="checkbox"
+		  v-model="toggle"
+		  true-value="yes"
+		  false-value="no"
+		>
+  </div>
+</body>
+<script>
+var app1 = new Vue({
+  el: '#app-1',
+  data: {
+    message: 1,
+    mult_message: 'ccc',
+    checked:'',
+    checkedNames:[],
+    picked:'',
+    selected:'A',
+    options:[
+	    {text:'One',value:'A'},
+	    {text:'Two',value:'B'},
+	    {text:'Three',value:'C'}
+    ],
+    toggle:true
+  }
+})
+</script>
+
+</html>

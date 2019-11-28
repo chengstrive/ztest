@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-component</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app-1">
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+	</div>
+	<div id="app-2">
+		<div :style="{ fontSize: postFontSize + 'em' }">
+			<blog-post 
+				v-for="post of posts" 
+				:key="post.id"
+				:post="post"
+				@enlarge-text="onEnlargeText"
+				v-model="searchText"
+			></blog-post>
+		</div>
+	</div>
+	<div id="app-3">
+		
+	</div>
+</body>
+<script>
+	Vue.component('button-counter',{
+		data:function(){
+			return{
+				counter: 0
+			}
+		},
+		template: '<button @click="counter++">you chick me {{counter}} times.</button>'
+	})
+
+	Vue.component('blog-post',{
+		props:['post','value'],
+		template: `
+		  <div class="blog-post">
+			  <h3>{{ post.title }}</h3>
+			  <button @click="$emit('enlarge-text',0.1)">Enlarge text</button>
+			  <div v-html="post.content"></div>
+			  <input
+		      v-bind:value="value"
+		      v-on:input="$emit('input', $event.target.value)"
+		    >
+		  </div>
+		`
+	})
+
+	Vue.component('my-component',{
+		props:{
+			// 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+			propA:Number,
+			// 多个可能的类型
+    	propB: [String, Number],
+    	//必填的字符串
+    	propC:{
+    		type:String,
+    		required: true
+    	},
+    	//带默认值
+    	propD:{
+    		type:Number,
+    		default:100
+    	},
+    	propE: {
+	      type: Object,
+	      // 对象或数组默认值必须从一个工厂函数获取
+	      default: function () {
+	        return { message: 'hello' }
+	      }
+	    },
+	    //自定义验证函数
+	    propF:{
+	    	validator: function (value) {
+	        // 这个值必须匹配下列字符串中的一个
+	        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+	      }
+	    }
+		}
+	})
+	var app1 = new Vue({
+		el:'#app-1'
+	})
+	var app2 = new Vue({
+		el:'#app-2',
+		data:{
+			posts: [
+	      { id: 1, title: 'My journey with Vue',content:'aaaaaa' },
+	      { id: 2, title: 'Blogging with Vue',content:'bbbbbb'  },
+	      { id: 3, title: 'Why Vue is so fun',content:'cccccc'  }
+	    ],
+	    postFontSize:1,
+	    searchText:'ccc'
+		},
+		methods:{
+			onEnlargeText:function(enlargAmount){
+				this.postFontSize += enlargAmount
+			}
+		}
+	})
+
+	var app3 = new Vue({
+		el:'#app-3'
+	})
+</script>
+</html>
+
+

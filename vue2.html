@@ -5,23 +5,141 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./js/underscore.js"></script>
 </head>
 
 <body>
   <div id="app">
-    <ol>
-      <todo-item></todo-item>
-    </ol>
+    <span v-once>Message: {{ msg }}</span>
+    <p>html: {{rawHtml}}</p>
+    <p v-html="rawHtml"></p>
+    <p :id="id">1111</p>
+    <button v-:disabled="isButtonDisabled">Button</button>
+    <a :href="url">想链哪里链哪里</a>
+  </div>
+  <div id="app-2">
+    <div>
+      <!-- <input @[eventName]="event" />
+      <button @click="eventName='change'">change</button>
+      <button @click="eventName='focus'">focus</button>
+      <button @click="eventName=1">1</button> -->
+      <!-- <a v-bind:[attriName]="url">想链哪里链哪里</a> -->
+    </div>
+  </div>
+  <div id="app-3">
+    <div>
+      <p>Original message: "{{ message }}"</p>
+      <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </div>
+  </div>
+  <div id="demo">
+    {{fullName}}
   </div>
 </body>
 <script>
-Vue.component('todo-item', {
-  // todo-item 组件现在接受一个
-  // "prop"，类似于一个自定义特性。
-  // 这个 prop 名为 todo。
-  props: ['todo'],
-  template: '<li>this is waiting</li>'
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    message: 'hi vue!'
+  },
+  computed: {
+    reversedMessage: function() {
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
+var cre = {
+  beforeCreate: function() {
+    console.log('beforeCreate')
+  },
+  created: function() {
+    console.log('created')
+  },
+  beforeMount: function() {
+    console.log('beforeMount')
+  },
+  mounted: function() {
+    console.log('mounted')
+  },
+  beforeUpdate: function() {
+    console.log('beforeUpdate')
+  },
+  updated: function() {
+    console.log('updated')
+  },
+  beforeDestroy: function() {
+    console.log('beforeDestroy')
+  },
+  destroy: function() {
+    console.log('destroy')
+  }
+}
+var app = new Vue(_.extend({
+  el: '#app',
+  data: {
+    msg: 'hello Vue',
+    rawHtml: '<span style="color: red">This should be red.</span>',
+    id: 'cccc',
+    isButtonDisabled: false, //null
+    url: 'https://www.baidu.com',
+    attriName: 'href'
+  }
+}))
+var app2 = new Vue(_.extend({
+  el: '#app-2',
+  data() {
+    return {
+      attriName: 'href'
+    }
+  },
+  methods: {
+    event() {
+      console.log('触发' + this.eventName + '事件')
+    }
+  }
+}, cre))
+
+var demo = new Vue({
+  el: '#demo',
+  data: {
+    firstName: 'zhang',
+    lastName: 'cheng',
+    // fullName:'zhang cheng'
+  },
+  computed: {
+    fullName: {
+      get: function() {
+        return this.firstName + ' ' + this.lastName
+      },
+      set: function(newValue){
+        var names = newValue.split(' ')
+        console.log(names)
+        this.firstName = names[0]
+        this.lastName = names[1]
+      }
+    }
+
+  },
+  // watch:{
+  //   firstName: function(z){
+  //     this.fullName = z + ' ' + this.lastName
+  //   },
+  //   lastName:function(c){
+  //     this.fullName = this.firstName + ' ' + c
+  //   }
+  // }
 })
 </script>
 
 </html>
+<!-- 代理商系统
+1、登录功能
+  用户通过账号、密码、验证码登录代理商系统
+  获取登录用户角色、权限等，不同角色显示不同功能模块
+2、登录后主界面
+  顶部左侧显示公司logo、右侧显示用户名信息
+  显示用户当日开户商户数、激活商户数、 累计开户商户数
+  ...后续还会增加些展示的东西
+3、用户开通和修改功能
+  查询条件
+  展示所有开户的用户信息，以列表形式展示 -->

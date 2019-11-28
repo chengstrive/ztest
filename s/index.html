@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.js</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="vue-app">
+		<h1>v-for循环</h1>
+		 <ul>
+		 	<li v-for="character in characters">
+		 		{{character}}
+		 	</li>
+		 </ul>
+		 	<template v-for="(user,index) in users">
+		 		<h3>{{index + 1}} . {{user.name}} - {{user.age}}</h3>
+		 		<p>age - {{user.age}}</p>
+		 	</template>
+			<template v-for="(user,index) in users">
+		 		<div v-for="(val,key) in user">
+		 			<p>{{key}} - {{val}}</p>
+		 		</div>
+		 	</template>
+
+		<h1> 动态 CSS Class </h1>
+		<h2 :class="{red:true,blue:true}">示例 1</h2>
+		<div @click="changeColor = !changeColor" :class="{changeColor:changeColor}">
+				<span>Herry</span>
+		</div>
+		<h2>示例 2</h2>
+		<button @click="changeColor = !changeColor">changeColor</button>
+		<button @click="changeLength = !changeLength">changeLength</button>
+		<div :class="compClasses">
+			<span>
+				Henry
+			</span>
+		</div>
+
+		<h1>Computed 计算属性</h1>
+		<button @click="a++">Add to A</button>
+		<button @click="b++">Add to B</button>
+		<p> A - {{ a }}</p>
+		<p> B - {{ b }}</p>
+		<p>Age + A = {{ addToA }}</p>
+		<p>Age + B = {{ addToB }}</p>
+		<h1>双向数据绑定 input/select/textarea </h1>
+		<label> 姓名</label>
+		<input ref="_name" type="text" v-model="name">  <!-- @keyup="logName" -->
+		<span>{{ name }}</span>
+		<label>年龄</label>
+		<input ref="_age" type="text" v-model="age">   <!-- @keyup="logAge" -->
+		<span>{{ age }}</span>
+		<h1>{{ greet() }} </h1>
+		<p>name: {{ name }}</p>
+		<p>job: {{ job }}</p>
+		<a :href="websit">百度</a>
+		<input type="text" :value="value">
+		<p v-html="tag"></p>
+		<button @click.once = "add(1)">+1</button>
+		<button @click = "subtract(1)">-1</button>
+		<button @click = "add(10)">+11</button>
+		<button @click = "subtract(10)">-11</button>
+		<p> My age is {{age}}</p>
+
+		<div id="canvas" @mousemove="updateXY">
+			{{X}},{{Y}} - <span @mousemove.stop=""> Stop Moving</span>
+		</div>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>

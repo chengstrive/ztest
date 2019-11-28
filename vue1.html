@@ -107,10 +107,27 @@ var app7 = new Vue({
   }
 })
 
-var data = {a:1}
-Object.freeze(data)
+// Object.freeze(data)
 var vm = new Vue({
-  data:data
+  el:'#app-7',
+  data:{a:1},
+  created:function(){
+    console.log('a is: '+this.a)
+  },
+  mounted:function(){
+    console.log('mounted')
+  },
+  updated:function(){
+    this.$nextTick(function () {
+      // Code that will run only after the
+      // entire view has been re-rendered  ？？
+       console.log('updated')
+    })
+  },
+  destroyed:function(){
+    //??
+    console.log('destroyed')
+  }
 })
 </script>
 
