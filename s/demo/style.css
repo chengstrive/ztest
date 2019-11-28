@@ -5,6 +5,9 @@
 	background: url(img/1.jpg) center no-repeat;
 	background-size: 80%;
 }
+#bag.burst{
+	background-image: url(img/2.jpg)
+}
 
 #bag-health{
 	width: 200px;
