@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-class&style</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p class="static"
+			:class="classObj">ccccc</p>
+		<p class="static"
+			:class="classObj1">ccccc</p>
+		<h2>数组语法</h2>
+		<p :class="[{active:isActive}, errorClass]">dddddd</p>
+		<my-component :class="cc"></my-component>
+	</div>
+	<script>
+		Vue.component('my-component',{
+			template: '<p class="foo bar">Hi</p>'
+		})
+		let app = new Vue({
+			el:"#app",
+			data:{
+				classObj:{
+					active : true, 
+					'text-danger': true
+				},
+				isActive:false,
+				error:null,
+				activeClass: 'active',
+  			errorClass: 'text-danger'
+			},
+			computed:{
+				classObj1:function(){
+					return {
+						active : this.isActive && !this.error,
+						'text-danger': this.error && this.error.type === 'fatal'
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -35,6 +35,23 @@
       :key="item.id"></todo-item>
     </ul>
     <p>{{o}}</p>
+    {{mustaches}}
+    <p v-html="mustaches"></p> 
+
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+
+    <p>{{ num + 1 }}</p>
+    <p>{{ok ? 'yes' : 'no'}}</p>
+    <p>{{message.split('').reverse().join('')}}</p>
+
+    <p v-if="seen">现在你看到我了</p>
+
+   <!--  <a :href="url" :[attributeName]="c">点我随便跳转</a>
+
+    <a :href="url" :[eventName]="d">点我随便跳转</a> -->
+
+    
+    {{t}}
   </div>  
 </body>
 <script>
@@ -56,11 +73,26 @@
         { id: 1, text: '奶酪' },
         { id: 2, text: '随便其它什么人吃的东西' },
       ],
-       o:obj
+       o:obj,
+       mustaches:"<span style='color:red;'>测试v-html样式</span>",
+       isButtonDisabled:null,
+       num:1,
+       ok:false,
+       url:"https://www.baidu.com",
+       // attributeName:"href",
+       // c:"_blank",
+       // eventName:"focus",
+       // d:"",
+       t:""
     },
     methods:{
       reverseMessage:function(){
         this.message = this.message.split('').reverse().join('')
+      }
+    },
+    computed:{
+      now: function(){
+        this.t = Date.now();
       }
     }
   })

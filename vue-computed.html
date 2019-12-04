@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-computed</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<p>{{t}}</p>
+			<p>{{t1}}</p>
+			<button @click="now1()">时间会变吗？</button>
+		</div>
+	</div>
+	<div id="app1">
+		<p>fullName:{{fullName}}</p>
+	</div>
+	<script>
+		let app = new Vue({
+			el:"#app",
+			data:{
+				t:"",
+				t1:""
+			},
+			methods:{
+				now1:function(){
+					this.t = this.now;
+					this.t1 = Date.now();
+				}
+			},
+			computed:{
+				now:function(){
+					return Date.now()
+				}
+			}
+		})
+		let app1 = new Vue({
+			el:"#app1",
+			data:{
+				lastName:"Foo",
+				firstName:"Bar",
+				// fullName:"Foo Bar"
+			},
+			// watch:{
+			// 	firstName:function(val){
+			// 		this.fullName = val + ' ' + this.lastName;
+			// 	},
+			// 	lastName:function(val){
+			// 		this.fullName = this.firstName + ' ' + val;
+			// 	}
+			// },
+			computed:{
+				fullName:{
+					get:function(){
+						return this.firstName + ' ' + this.lastName;
+					},
+					set:function(newValue){
+						var names = newValue.split('');
+						if(names.length === 2){
+							this.firstName = names[0];
+							this.lastName = names[names.length - 1];
+						}else{
+							console.log("值不对");
+						}
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>

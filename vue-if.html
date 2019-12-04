@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vur-if</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p v-if="awesome">Vue is awesome!</p>
+    <p v-if="awesome1">Vue is awesome!</p>
+    <p v-else>Oh no </p>
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+    <div>
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="username-email">
+      </template>
+    </div>
+
+    <h1 v-show="ok">Hello!</h1>
+  </div>
+  <script>
+  let app = new Vue({
+    el: "#app",
+    data: {
+      awesome: false,
+      awesome1: true,
+      type: 'A',
+      loginType:"",
+      ok:false
+    }
+  })
+  </script>
+</body>
+
+</html>
