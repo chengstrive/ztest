@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-on</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="example-1">
+		<button @click="counter += 1">1.Add 1</button>
+		<p>The button above has been clicked {{ counter }} times.</p>
+		<button @click="greet">2.methods-Greet</button>
+		<a @click.once="say(2)" style="display: block;width:100px;height:100px;background-color:red;">你好<span @click.stop="say(1)" style="cursor: pointer;width:10px;height:10px;background-color:green;">嘛</span></a>
+	</div>
+	<script>
+		let ex1 =  new Vue({
+			el:"#example-1",
+			data:{
+				counter:0,
+				name:'Vue.js',
+			},
+			methods:{
+				greet:function(event){
+					console.log('Hello' + this.name + '!');
+					if(event){
+						console.log(event.target.tagName);
+					}
+				},
+				say:function(_s){
+					alert(_s);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

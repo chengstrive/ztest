@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-form</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="model-example">
+    <input v-model="message" placeholder="edit me">
+    <p>{{message}}</p>
+    <h3>多行文本 </h3>
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ message }}</p>
+    <textarea v-model="message" palceholder="add multiline message"></textarea>
+    <h3>复选框</h3>
+    <input type="checkbox" v-model="checked">
+    <label for="checkbox">{{checked}}</label>
+    <h3>多个复选框</h3>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+  </div>
+  <script>
+  let mex = new Vue({
+    el: "#model-example",
+    data: {
+      message: "",
+      // 'multi-message':""
+      checked: false,
+      checkedNames:[]
+    }
+  });
+  </script>
+</body>
+
+</html>
