@@ -27,6 +27,33 @@
     <label for="mike">Mike</label>
     <br>
     <span>Checked names: {{ checkedNames }}</span>
+		
+		<br>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>picked:{{picked}}</span>
+
+    <br>
+    <select multiple  v-model="selected">
+    	<option value="">请选择</option>
+    	<option>A</option>
+    	<option>B</option>
+    	<option>C</option>
+    </select>
+    <span>selected:{{selected}}</span>
+
+    <input type="checkbox"
+    	v-model="toggle"
+    	true-value="yyy"
+    	false-value="fff"
+    >
+    <span>toggle:{{toggle}}</span>
+		<br>
+		<input type="radio" v-model="pick" :value="cccc"><span>pick:{{pick}}</span>
   </div>
   <script>
   let mex = new Vue({
@@ -35,7 +62,12 @@
       message: "",
       // 'multi-message':""
       checked: false,
-      checkedNames:[]
+      checkedNames:[],
+      picked:'',
+      selected:[],
+      toggle:false,
+      pick:'',
+      cccc:'zc'
     }
   });
   </script>
