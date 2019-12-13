@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-component-props</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app1">
+    <blog-post title="hello!"></blog-post>
+  </div>
+  <script>
+  Vue.component('blog-post', {
+    props: { 
+    	title:String, 
+    	likes:Number, 
+    	isPublished:Boolean, 
+    	commentIds:Array, 
+    	author:Object,
+    	callback:Function,
+    	contactsPromise: Promise // or any other constructor
+    },
+    template: '<h3>{{title}}</h3>'
+  })
+  let app1 = new Vue({
+    el: '#app1'
+  })
+  </script>
+</body>
+
+</html>

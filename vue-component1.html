@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-component-1</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="component1">
+		<my-component-name></my-component-name>
+		<test></test>
+
+		<!-- <h3>prop</h3> -->
+		<blog-post
+			post-title="success"
+			data-date-picker="activated"
+			likes="42"
+			is-published
+			:comment-ids="[1,2,3,4,5]"
+			:auth="{
+		    name: 'Veronica',
+		    company: 'Veridian Dynamics'
+		  }"
+		>
+			<span class="fa fa-user"></span>
+  		Your Profile
+  		<my-component-name></my-component-name>
+		</blog-post>
+	</div>
+	<script>
+		Vue.component('blog-post',{
+			inheritAttrs:false,
+			props:{
+				postTitle:{
+					type:[String,Number],
+					// required:true,
+					default:"zhang",
+					validator: function (value) {
+		        // 这个值必须匹配下列字符串中的一个
+		        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+		      }
+				},
+				likes:String,
+				isPublished:'',
+				commentIds:Array,
+				auth:{}
+			},
+			template:'<h3>{{postTitle}}<slot></slot></h3>'
+		})
+		Vue.component("my-component-name",{
+			template:'<p>hello vue!</p>'
+		})
+		new Vue({
+			el:"#component1",
+			data:{
+			},
+			components:{
+				test:{
+					template:'<p>hello zc!</p>'
+				}
+			}
+		})
+	</script>
+</body>
+</html>
