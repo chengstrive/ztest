@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-slot</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app-example">
+    <navigation-link url="/profile">
+    	Clicking here will send you to: {{  }} <br>
+    	<span class="fa fa-user"></span>
+      Your Profile
+    </navigation-link>
+    <alert-box>
+      Something bad happened.
+    </alert-box>
+
+    <base-layout>
+		  <template v-slot:header>
+		    <h1>Here might be a page title</h1>
+		  </template>
+			<!-- <template v-slot:default> -->
+			  <p>A paragraph for the main content.</p>
+			  <p>And another one.</p>
+			<!-- </template> -->
+		  <template v-slot:footer>
+		    <p>Here's some contact info</p>
+		  </template>
+
+		</base-layout>
+		  1111111111111111111111111111111111111111111111<br>
+
+		<current-user :user="user">
+			<template v-slot:default="slotProps">
+				{{ slotProps.user.firstName }}
+			</template>
+		</current-user>
+  </div>
+  <script>
+  Vue.component('navigation-link', {
+  	props:['url'],
+    template: `
+			<a :href="url">
+				<slot>cccc</slot>
+			</a>
+  	`
+  })
+  Vue.component('alert-box', {
+    template: `
+	    <div class="demo-alert-box">
+	      <strong>Error!</strong>
+	      <slot></slot>
+	    </div>
+	  `
+  })
+
+  Vue.component('base-layout',{
+  	template:`
+			<div class="container">
+			  <header>
+			    <!-- 我们希望把页头放这里 -->
+			    <slot name="header"></slot>
+			  </header>
+			  <main>
+			    <!-- 我们希望把主要内容放这里 -->
+			    <slot></slot>
+			  </main>
+			  <footer>
+			    <!-- 我们希望把页脚放这里 -->
+			    <slot name="footer"></slot>
+			  </footer>
+			</div>
+  	`
+  })
+
+  Vue.component('current-user',{
+    props:['user'],
+  	template:`
+			<span>
+				<slot :user="user"> {{ user.lastName }} </slot>
+			</span>
+  	`
+  })
+  let app1 = new Vue({
+    el: "#app-example",
+    data:{
+    	user:{
+	    		firstName:"zhangsan",
+	    		lastName:"lisi"
+	    	}
+    },
+  })
+  </script>
+</body>
+
+</html>

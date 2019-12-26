@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-component-prop</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app1">
+		<!-- <blog-post 
+			post-Title="cccc"
+			:like-s="12"
+			is-published
+			:is-published="false"
+			:comment-ids="[234, 266, 273]"
+			:author="{
+		    name: 'Veronica',
+		    company: 'Veridian Dynamics'
+		  }"
+		></blog-post> -->
+		<!-- <blog-post 
+			v-bind="post"
+		></blog-post> -->
+		<blog-post1 
+			prop-c="89"
+			prop-f="success"
+			data-date-picker="activated"
+			class="date-picker-theme-dark"
+		></blog-post1>
+	</div>
+	<script>
+		Vue.component('blog-post',{
+			// props: ['postTitle', 'likeS', 'isPublished', 'commentIds', 'author'],
+			props:{
+				postTitle:String,
+				likeS:Number,
+				isPublished:Boolean,
+				commentIds:Array,
+				author:Object,
+				callback:Function,
+				contactsPromise:Promise
+			},
+			template:'<div><p v-for="(value, name) in this._props">{{name}}:{{value}}</p></div>'
+		})
+
+		Vue.component('blog-post1',{
+			inheritAttrs: false,
+			props: {
+				propA:Number,
+				propB:[String,Number],
+				propC:{
+					type:String,
+					required:true
+				},
+				propD:{
+					type:Number,
+					default:100
+				},
+				propE:{
+					type:Object,
+					default:function(){
+						return {message:'hello'}
+					}
+				},
+				propF:{
+					validator:function(value){
+						return ['success','warning','danger'].indexOf(value) !== -1
+					}
+				}
+			},
+			data: function () {
+			  return {
+			    counter: this.initialCounter
+			  }
+			},
+			template:'<div class="form-control"><p v-for="(value, name) in this._props">{{name}}:{{value}}</p></div>'
+		})
+
+		let app1 = new Vue({
+			el:'#app1',
+			data:{
+				post:{
+					postTitle:'String',
+					likeS:11,
+					isPublished:false,
+					commentIds:[234, 266, 273],
+					author:{
+					    name: 'Veronica',
+					    company: 'Veridian Dynamics'
+					  },
+					callback:null,
+					contactsPromise:null
+				}
+			}
+		})
+	</script>
+</body>
+</html>
