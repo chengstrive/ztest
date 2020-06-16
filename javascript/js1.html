@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js1.js"></script>
+	<script>
+		// window.onload = function(){
+		// 	var images = document.getElementsByTagName("img");
+		// 	for (var i = 0; i < images.length; i++) {
+		// 		var image = images[i];
+		// 		if(image.addEventListener)
+		// 			image.addEventListener("click", hide, false);
+		// 		else
+		// 			image.attachEvent("onclick",hide);
+		// 	}
+
+		// 	function hide(event) {event.target.style.visibility = "hidden";}
+		// }
+
+		function debug(msg){
+			var log = document.getElementById("debuglog");
+
+			if(!log){
+				log = document.createElement("div");
+				log.id = "debuglog";
+				log.innerHTML = "<h1>Debug Log</h1>";
+				document.body.appendChild(log);
+			}
+
+			var pre = document.createElement("pre");
+			var text = document.createTextNode(msg);
+			pre.appendChild(text);
+			log.appendChild(pre);
+		}
+
+		window.onload = function(){
+			var images = document.getElementsByTagName("img");
+
+			for(var i = 0; i < images.length; i++){
+				var image = images[i];
+				if(image.addEventListener)
+					image.addEventListener("click", hide, false);
+				else
+					image.attachEvent("onclick", hide);
+			}
+
+			function	hide(event) { event.target.style.visibility = "hidden"; }
+		}
+	</script>
+	<style>
+		img{
+			width: 30px;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="debug('amoxi')">show debug</button>
+ 	<img src="1.jpg" alt="">
+ 	<img src="1.jpg" alt="">
+ 	<img src="1.jpg" alt="">
+ 	<img src="1.jpg" alt="">
+ 	<img src="1.jpg" alt="">
+	<!-- Hello
+	<button onclick="hide(this,true);debug('hide button 1');">Hide1</button>
+	<button onclick="hide(this);debug('hide button 2');">Hide2</button>
+	world -->
+</body>
+</html>

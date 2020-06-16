@@ -9,6 +9,10 @@
 	<div id="app1">
 		<base-checkbox v-model="lovingVue"></base-checkbox>
 		<base-input @:focus.native="OnFocus" label="ccccc"  value="ddddddd"></base-input>
+		{{doc}}
+		<text-document
+		  v-bind.sync="doc"
+		></text-document>
 	</div>
 	<script>
 		Vue.component('base-checkbox',{
@@ -55,14 +59,31 @@
 				</label>
 			`
 		})
-
+		Vue.component('text-document',{
+			props:['title','zzz'],
+			methods:{
+				aa:function(newTitle){
+					console.log(this.$emit('update:title', newTitle));
+					console.log(this.$emit('update:zzz', newTitle));
+				}
+			},
+			template:`<div><h1>{{title}}</h1><button @click="aa('cccc')">修改父组件</button></div>`
+		})
 
 		let app1 = new Vue({
 			el:"#app1",
 			data:{
-				lovingVue:false
+				lovingVue:false,
+				doc:{
+					title:'ccc',
+					zzz:'ddddd'
+				}
 			}
 		})
 	</script>
 </body>
 </html>
+
+
+
+
