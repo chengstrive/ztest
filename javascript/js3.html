@@ -84,7 +84,30 @@
   }
   console.log("a == 4: " + a == 4 );
   console.log("a = " + a + " b = " + b );
+  console.log("假值: false,undefined, null, 0, -0, NaN, \"\"");
 
+  var o;
+  if(o){
+    console.log("o是null");
+  }else if (o == undefined){
+    console.log("o 是undefined")
+  }else{
+    console.log(o);
+  }
+
+  var c = {};
+  //null是关键字，他表示一个特殊值，描述“空值”，是一种特殊的对象值，含义是非对象
+  console.log(c == null)
+  console.log(typeof(null));
+  //undefined 未定义的值，表示更深层次的“空值”，它是变量的一种取值，表明变量没有初始化，表示这个属性或元素不存在
+  console.log(undefined == null);
+  console.log(undefined === null);
+
+  //3.6 包装对象
+  var s = "test";
+  // s.len = 4;
+  // var t = s.len;
+  console.log(s.len);
   </script>
 </body>
 
