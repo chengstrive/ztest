@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Javascript 类型、值、变量</title>
+</head>
+
+<body>
+  javascript 数据类型分为两类：原始类型、对象类型
+  原始类型：数字、字符串、布尔值
+  特殊的原始值：null 、undefined
+  对象类型
+  是属性的集合、每个属性都由 “名/值对”
+  特殊对象：全局对象、数组
+  “命/名值”
+  特殊对象：数组-带编号的值的有序集合
+  特殊对象：函数-具有与它相关联的可执行代码的对象
+  特殊对象：构造函数-函数用来初始化new一个新建的对象 constructor
+  除了函数、数组之外，日期Date、正则RegExp、错误Error类
+  JavaScript解释器有自己的内存管理机制，可以自动对内存进行垃圾回收
+  JavaScript的类型还可以分为：拥有方法的类型和不能拥有方法的类型；
+  还可以分为可变类型（对象、数组）不可变类型（数字、布尔值、null、undefined；
+  可变类型的值是可以修改的，对象、数组属于可变类型：JavaScript程序可以更改对象的属性值
+  JavaScript算术运算符
+  + - * / %
+  日期和时间
+  <script>
+  0
+  3
+  1000000
+  0XFF //15*16+15
+  0377
+
+  console.log(Math.pow(2, 53));
+  console.log(Math.PI);
+
+  var then = new Date(2011, 0, 1);
+  console.log(then);
+  var later = new Date(2011, 0, 1, 17, 10, 30);
+  console.log(later);
+  var now = new Date();
+  console.log(now - then);
+  console.log(later.getFullYear() + " 年 " + (later.getMonth() + 1) + " 月 " + later.getDate() + " 日 星期" + later.getDay() + " " + later.getHours() + ":" + later.getMinutes() + ":" + later.getSeconds())
+
+
+  var s = "hello, world";
+  console.log(s.charAt(0) + "\n" +
+    s.substring(1, 4) + "\n" +
+    s.slice(1, 4) + "\n" +
+    s.slice(-3) + "\n" +
+    s.indexOf("l") + "\n" +
+    s.lastIndexOf("l") + "\n" +
+    s.indexOf("l", 3) + "\n" +
+    s.split(", ") + "\n" +
+    s.replace("l", "L") + "\n" +
+    s.toUpperCase()
+  );
+
+  console.log("\n");
+
+  var msg = "Hello," + "World";
+  console.log(msg + "\n" +
+    "msg.length: " + msg.length + "\n" +
+    "msg.charAt: " + msg.charAt(0)+ "\n" +
+    "msg.charAt: " + msg.charAt(msg.length-1) + "\n" +
+    "msg.substring: " + msg.substring(0,4) + "\n" + 
+    "msg.slice: " + msg.slice(0,4) + "\n" +
+    "msg.slice: " + msg.slice(-3) + "\n" +
+    "msg.indexOf: " + msg.indexOf('W') + "\n" +
+    "msg.lastIndexOf: " + msg.lastIndexOf('o') + "\n" +
+    "msg.split: " + msg.split(',')[0] + "\n" +
+    "msg.replace: " + msg.replace("o","12") + "\n" +
+    "msg.toUpperCase: " + msg.toUpperCase() + "\n" +
+    msg
+    );
+  </script>
+</body>
+
+</html>
