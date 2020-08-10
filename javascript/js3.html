@@ -104,10 +104,53 @@
   console.log(undefined === null);
 
   //3.6 包装对象
-  var s = "test";
-  // s.len = 4;
-  // var t = s.len;
-  console.log(s.len);
+
+  var s = "Hello World!"; //new String(s)
+  var word = s.substring(s.indexOf(" ") + 1, s.length);
+  console.log(word);
+
+  var s={};// = "test";
+  s.len = 4; //临时字符串对象
+  // console.log("000000000000：" + s.len);
+  var t = s.len;
+  // console.log(s.len);
+
+  var s = "test", n = 1, b = true;
+  var S = new String(s);
+  var N = new Number(n);
+  var B = new Boolean(b);
+  console.log("String S:" + S + "\n" +
+    "typeof(S): " + typeof(S) + "\n" +
+    "typeof(s): " + typeof(s) + "\n" +
+    "S == s: " + (S == s)  + "\n" +
+    "S ===s: " + (S === s ))
+
+
+  //3.7 不可变的原始值和可变的对象引用
+  //javascript 原始值： undefined,null,布尔值,数字和字符串
+  //对象 数组和函数
+  var s = "hello";
+  console.log("s:" + s + "\n" +
+    "s.toUpperCase: " + s.toUpperCase() + "\n" +
+    "s: " + s )
+
+  var o = { x:1 };
+  o.x = 2;
+  o.y = 3;
+  console.log(o);
+
+  var a = { x: 1 },b = { x:1 };
+  console.log("a === b:" + (a === b) + "\n" +
+    "a == b: " + (a == b))
+
+  function equalArrays(a,b){
+    if(a.length != b.length) return false;
+    for(var i = 0; i < a.length; i++){
+      if(a[i] !== b[i]) return false;
+    }
+    return true;
+  }
+  console.log(equalArrays([1,2,34,4,5],[1,2,3,4,5]));
   </script>
 </body>
 
