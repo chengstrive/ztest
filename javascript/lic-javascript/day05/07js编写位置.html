@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+	  // 可以编写到script标签中
+	  alert("我是内部的js");
+  </script>
+  <script src="js/script.js">
+	  // script标签一旦外部引用，内部引用的结算无效
+	  alert("我是外部引用js script标签内部的js");
+  </script>
+</head>
+
+<body>
+  <!-- js代码编写到onclick属性中 代码耦合，不建议-->
+  <button onclick="alert('讨厌，点我干嘛')">点我干嘛</button>
+  <!-- js代码写到超链接 href中 -->
+  <a href="javascript:alert('超链接点我干嘛');">超链接点我干嘛</a>
+  <a href="javascript:;">超链接点我干嘛</a>
+</body>
+
+</html>
