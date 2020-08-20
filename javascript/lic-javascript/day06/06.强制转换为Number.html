@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		/*
+		*
+		* 将其他数据类型转换为 Number
+		*    转换方式一：
+		*				使用Number()函数
+		*						-字符串 -- > 数字
+		*							1.如果字符串为纯数字，直接转换为数字
+		*							2.非数字内容，则转换为NaN
+		*							3.如果字符串是一个空字符串或多个空格 转换为 0
+		*							4.如果Boolean 转数字，true-->1 false-->0
+		*   					5.如果Null 转数字，null--> 0
+		*   					6.undefined 转数字，undefined--> NaN
+		*   	转换方式二：				
+		*   					- 这种方式专门用来对付字符串
+		*   					- parseInt() 把一个字符串转换成一个整数
+		*   					- parseFloat() 把一个字符串转换成一个浮点数
+		*							- 如果对非String类型使用parseInt()
+		*									它会想将其转换为String,再进行转换
+		*/
+
+		var  a = "123";
+
+		console.log(typeof a + "\t " + a);
+
+		a = "abc";
+		a = Number(a);
+		console.log(typeof a + "\t " + a);
+
+		a = "";
+		a = Number(a);
+		console.log(typeof a + "\t " + a);
+
+		a = true;
+		a = Number(a);
+		// a = parseInt(a) ;
+		console.log(typeof a + "\t " + a);
+
+		a = null;
+		a = Number(a);
+		console.log(typeof a + "\t " + a);
+
+		a = undefined;
+		a = Number(a);
+		console.log(typeof a + "\t " + a);
+
+		a = "123.456.789px234oo";
+		// a = parseInt(a) ;
+		a = parseFloat(a);
+
+		console.log(typeof a + "\t " + a);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

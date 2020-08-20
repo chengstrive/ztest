@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script>
+		/* 
+		* 运算符也叫操作符
+		*		通过运算符可以对一个或多个值进行运算
+		*		比如：typeof就是云算符，可以获得一个值的类型
+		*   		    它会将该值的类型以字符串形式返回
+
+		*  算数云算符
+		*			当对非Number类型的值进行运算时，它会将这些值转换为number 再进行运算
+					任何数 和 NaN 做运算 结果都是NaN
+		*	 + 
+		*			+ 可以对两个值进行加法运算，并将结果返回
+		*			+ 如果对两个字符串进行加法运算，则会做拼接操作；			
+		*			+ 任何值和字符串做加法运算，都会先转换为字符串，再作运算；
+		*					- 瘾式的类型转换
+
+		*  - * / %	
+		*						
+		*         
+		*
+		*/
+
+		var a = 123;
+
+		// var result = typeof a;
+		var result = true + 1;
+
+		result = true + false;
+
+		result = 2 + null;
+
+		result = 2 + NaN;
+
+		result = true + "1";
+
+		result = 1 + 2 + "3"; //"33"
+		result = "1" + 2 + 3; // "123"
+
+
+		result = 100 - 5;
+		result = 100 - "1";
+		
+		result = 100 - true;  //99
+		result = 100 - "a";    //NaN
+		result = 100 - null;  //100
+		result = 100 - undefined; //NaN
+
+		result = "123" - 0;
+		console.log(typeof result + " \t" + result);
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

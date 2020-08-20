@@ -8,16 +8,54 @@
 		* 强制类型转换
 		*		- 将一个数据类型强制转换成其他数据类型
 		*		- 类型装换主要指，将其他数据类型，转换为
-						String Number Boolean
+						String Number Boolean 
 		*
 		*/
 		/*
 		* 将其他类型转换成String
-		*
-		*
+		* 方法一：
+		*    - 调用被转换数据的toString()方法
+		*		 - 调用该方法不会影响原变量，它会将结果返回
+		*		 - 但是注意：null 和 undefined 没有toString()方法
+		*  方法二：
+		*		 - 调用String()函数，将被转换数据作为参数传入函数；
+		*		 - 使用String()函数强制转换时：
+		*    			对于Number、Boolean 实际上是调用的toString()方法；
+		*         但是对于null和undefined，就不会调用toString()方法，
+		*             它会将 null 转换为 "null"
+		*             会将 undefined 转换为 "undefined"
 		*/
 
 		var a = 123;	
+		console.log(typeof a);
+		console.log(a);
+
+		//调用xxx.toString() 转换成字符串
+		// a = a.toString(); 
+		a = String(a);
+		console.log(typeof a);
+		console.log(a);
+
+
+		a = true;
+		// a = a.toString();
+		a = String(a);
+		console.log(typeof a);
+		console.log(a);
+
+
+		a = null; 
+		// a = a.toString(); //Uncaught TypeError: Cannot read property 'toString' of null
+		a = String(a);
+		console.log(typeof a);
+		console.log(a);
+
+
+		a = undefined;
+		// a = a.toString(); //Uncaught TypeError: Cannot read property 'toString' of null
+		a = String(a);
+		console.log(typeof a);
+		console.log(a);
 
 	</script>
 </head>

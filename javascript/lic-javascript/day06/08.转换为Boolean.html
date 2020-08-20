@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+  /*
+			将其转换为Boolean
+			- 使用Boolean()函数
+			  数字-->布尔 除了0 和 NaN，其余都是true
+			  字符串-->布尔 除了空串"" ，其余都是true
+				Null --> 布尔 false
+				undefined --> 布尔 false
+				对象也会转换为 true
+		*/
+  var a = 123;
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //true
+
+  var a = Infinity;
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //true
+
+  var a = 0;
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //false
+
+  var a = NaN;
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //false
+
+
+
+  var a = "hello";
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //true
+
+  var a = "";
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //false
+
+
+
+  var a = null;
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //false
+
+  var a = undefined;
+  a = Boolean(a);
+  console.log(typeof a + "\t" + a); //false
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
