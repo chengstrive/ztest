@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+		/*
+		* 一元运算符	
+		*			+
+		*					
+		*			- 负号
+		*				-  负号可以对数字进行负号取反
+		*
+		* 对于非Number类型的值
+		*			它会先转换为Number，然后再进行运算
+		*			可以使用+，来将其转换为number
+		*/
+		var a = 123;
+		a = +a;
+		console.log(a);
+
+		a = true;
+		a = -a;
+		console.log("a = " +a);
+
+		a = "18";
+		a = +a;
+		console.log("a = " +a);
+		console.log("typeof:" + typeof a);
+
+		var result = 1 + +"2" + 3;
+		console.log("result = " + result);
+		console.log("typeof:" + typeof result);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

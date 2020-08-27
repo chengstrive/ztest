@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+		/*
+		* 自增  ++
+				- 使用通过自增 可以使我们的变量在自身的基础上+1
+		*		- 对于变量自增以后，原变量的值会立即自增1；
+		*		- 自增分成两种：后++(a++) 和 前++(++a)
+		* 				无论是a++ 还是 ++a ,都会立即使原变量立即加1；
+		*					不同的是a++ 和 ++a 的值不同；
+									a++的值等于原变量的值(自增前的值）；
+									++a的值等于原变量自增后的新值(自增后的值）；
+
+		*	自减 --
+		*  - 对于变量自减以后，原变量的值会立即自减1；
+		*		- 自增分成两种：后--(a--) 和 前--(--a)
+		* 				无论是a-- 还是 --a ,都会立即使原变量立即减1；
+		*					不同的是a-- 和 --a 的值不同；
+									a--的值等于原变量的值(自减前的值）；
+									--a的值等于原变量自减后的新值(自减后的值）；
+		*/
+
+		var num = 10;
+		// num-- ; //9
+		// -- num; //9
+		// console.log(num--); //10
+		// console.log(--num);//9
+		console.log("num = " + num);
+
+
+		var a = 1;
+		// a++; //a = a + 1;
+		// ++a;
+		// console.log("a = " + a);
+
+		console.log("a++ = "+ a++); 
+		a = 1;
+		console.log("++a = "+ ++a); 
+
+		console.log("a = " + a);
+
+		var d = 20;
+		// var result = d++ + ++d + d;
+		// console.log("result = " + result);
+
+		d = d++; //20
+		console.log(d);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
