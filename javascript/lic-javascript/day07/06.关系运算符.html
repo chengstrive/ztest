@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+		/*
+			通过关系运算符 可以比较两个值之间的关系
+				-如果关系成立它会返回 true，如果关系不成立返回false
+
+				> 大于号
+					- 判断左侧的值是否大于右侧的值
+					- 如果关系成立返回true 不成立返回fasle
+				>= 大于等于
+
+				< 小于号
+				<= 小于等于
+
+				非数值的情况 
+					对于非数值比较时 先转换 在比较
+					如果符号两侧都是字符串时，不会将其转换成数字比较，比较的是Unicode编码
+		*/
+		var result = 5 > 10; // false
+		result = 5 > 4; // ture
+		result = 5 > 5; //false
+		result = 5 >= 5; //true
+		result = 5 <= 4; //false
+		result = 5 <= 5; //true
+		// console.log("result = " + result );
+
+		result = 1 >= true;
+		result = 1 >= "0";
+		result = 1 > null; //true
+		//任何值和NaN 做任何比较都是false
+		result = 1 > NaN; //false
+
+
+		//比较两个字符串时，比较的是字符串的字符编码
+		result = "a" < "b";   //true
+		//比较两个字符串时 是一位一位的比较，可以借用它来对英文排序
+		result = "bbb" <= "b"; //false
+		result = "11" < "5"; // true;
+		//比较两个字符串型的数字时 ，一定要转型
+		result = "11" < +"5"; // true;
+
+
+		console.log("result = " + result );
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
