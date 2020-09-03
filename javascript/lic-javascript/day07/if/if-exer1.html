@@ -11,7 +11,49 @@
 								函数的返回值为用户输入的内容
 			*/
 
-			var score =prompt("请输入小明的期末成绩");
+			// var score =prompt("请输入小明的期末成绩");
+
+			
+			// alert(height + "--" + money + "--" + face);
+
+			//练习二
+			/*var height = prompt("请输入你的身高(CM):");
+			var money = prompt("请输入你的财富(万):");
+			var face = prompt("请输入你的颜值(ps):");
+
+			if(height > 180 && money > 1000 && face > 500){
+				alert("我一定要嫁给他!")
+			}else if(height > 180 || money > 1000 || face > 500){
+				alert("嫁吧! 比上不足,比下有余!")
+			}else{
+				alert("不嫁!")
+			}*/
+
+			//练习三
+
+			var num1 = +prompt("请输入第一个数:");
+			var num2 = +prompt("请输入第二个数:");
+			var num3 = +prompt("请输入最后一个数:");
+
+			if(num1 >= num2 && num1 >= num3){
+				if(num2 >= num3){
+					alert(num1 + ">=" + num2 + ">=" + num3 )
+				}else{
+					alert(num1 + ">=" + num3 + ">=" + num2 )
+				}
+			}else if(num2 >= num1 && num2 >= num3){
+				if(num1 >= num3){
+					alert(num2 + ">=" + num1 + ">=" + num3 )
+				}else{
+					alert(num2 + ">=" + num3 + ">=" + num1 )
+				}
+			}else{
+				if(num1 >= num2){
+					alert(num3 + ">=" + num1 + ">=" + num2 )
+				}else{
+					alert(num3 + ">=" + num2 + ">=" + num1 )
+				}
+			}
 
 	</script>
 </head>
