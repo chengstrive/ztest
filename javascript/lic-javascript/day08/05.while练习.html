@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>if练习1</title>
+	<script>
+		
+		/**
+				prompt()可以弹出一个提示框,该提示框中会带有一个文本框,可接收用户输入信息;
+								需传一个参数,作为提示框的提示信息;
+								函数的返回值为用户输入的内容
+			*/
+
+
+			var score = -1	;
+			while(true){
+				score = prompt("请输入小明的期末成绩");
+				if(score <= 100 && score >= 0){
+					break;
+				}
+			}
+
+			if(score > 100 && score < 0){
+				alert("拉出去毙了")
+			}else{
+				if(score == 100){
+					alert("宝马");
+				}
+			}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+		/*
+			 for语句,也是一个循环语句,也称为for循环
+			 	在for循环中,为我们提供了专门的位置,用来放三个表达式
+			 			1.初始化表达式;
+			 			2.条件表达式;
+			 			3.更新表达式
+
+			 语法:
+			   for( ①初始化表达式; ②条件表达式; ④更新表达式){
+						③语句..
+			   }
+
+			 		for循环执行流程
+			 			①初始化表达式
+			 			②条件表达式;
+			 					如果true 则执行循环体③
+			 					如果是false 则结束
+			 			④ 更新表达式
+
+			 	for循环中的三部分都可以省略,也可以写在外部;
+			 			如果for循环中不写任何表达式,只写俩; 此时循环是一个死循环 慎用!
+		*/
+		var str = "";
+		for (var i = 0; i < 10; i++) {
+			for (var j = 0; j <= i; j++) {
+				str += " *";
+			}
+			str += "\n";
+		}
+		// console.log(str);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
